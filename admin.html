@@ -336,11 +336,11 @@ nav ul li a.active {
             </div>
             <div class="form-group">
                 <label>嵌入卡片顯示網址</label>
-                <input type="text" id="embedUrl" value="https://sites.google.com/view/ks-alliance">
+                <input type="text" id="embedUrl" value="https://ksclan.github.io/KSclan">
             </div>
             <div class="form-group">
                 <label>嵌入卡片連結目標</label>
-                <input type="text" id="embedLink" value="index.html">
+                <input type="text" id="embedLink" value="https://ksclan.github.io/KSclan">
             </div>
             <button class="btn-save" onclick="saveEmbedSettings()">儲存嵌入卡片設定</button>
         </div>
@@ -508,8 +508,8 @@ function loadSettings() {
     document.getElementById('youtubeId').value = localStorage.getItem('youtubeId') || 'u1A5vfQ758A';
     
     document.getElementById('embedTitle').value = localStorage.getItem('embedTitle') || '𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮';
-    document.getElementById('embedUrl').value = localStorage.getItem('embedUrl') || 'https://sites.google.com/view/ks-alliance';
-    document.getElementById('embedLink').value = localStorage.getItem('embedLink') || 'index.html';
+    document.getElementById('embedUrl').value = localStorage.getItem('embedUrl') || 'https://ksclan.github.io/KSclan';
+    document.getElementById('embedLink').value = localStorage.getItem('embedLink') || 'https://ksclan.github.io/KSclan';
     
     document.getElementById('coreMembers').value = localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK';
     document.getElementById('examiners').value = localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda';
