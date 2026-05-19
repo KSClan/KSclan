@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮 - Roblox Rivals</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+.big-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #333;
+    font-weight: 500;
+    text-align: left;
+    margin: 20px 0;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo-img {
+    max-height: 40px;
+    border-radius: 6px;
+}
+
+.nav-logo-text {
+    font-size: 1.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: block;
+    font-weight: 500;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #ffd700;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 20px 40px 20px;
+}
+
+.logo {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.team-logo {
+    display: block;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 8px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 8px;
+    text-align: left;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.big-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    font-weight: normal;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.small-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #555;
+    font-weight: normal;
+    text-align: left;
+    margin: 20px 0;
+}
+
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section p {
+    line-height: 1.8;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.features-list {
+    list-style: none;
+}
+
+.features-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.features-list li:before {
+    content: "✓";
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.small-card {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.small-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.small-card:active {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+.small-card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+.small-card h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.small-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-discord {
+    background: #5865F2;
+    color: white;
+}
+
+.btn-discord:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.2);
+}
+
+.btn-admin {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-admin:hover {
+    background: #ee5a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img src="" alt="KS Logo" class="nav-logo-img" id="navLogoImg" style="display:none;">
+            <span class="nav-logo-text">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</span>
+        </div>
+        <ul>
+            <li><a href="index.html" class="active">首頁</a></li>
+            <li><a href="members.html">成員</a></li>
+            <li><a href="exam.html">考試</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header-section">
+            <img src="" alt="KS Team Logo" class="team-logo" id="teamLogoImg" style="display:none;">
+            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+        </div>
+
+        <h1>簡介</h1>
+        <h2 id="homeIntroText" style="font-size: 1.3rem; border-bottom: none; padding-bottom: 0;">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</h2>
+        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
+
+        <h3>💡 為什麼選擇 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮？</h3>
+        <ul class="features-list">
+            <li>支援步槍、小刀、狙擊槍等各類考試</li>
+            <li>完善的分級制度與明確分類，讓你清楚掌握自己的實力定位</li>
+            <li>聊天室熱鬧有趣，環境和諧、鮮少糾紛</li>
+            <li>不定期舉辦友誼賽</li>
+            <li>提供彈性的改名制度</li>
+        </ul>
+        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
+
+        <h3 id="joinTitleText" style="font-size: 1.5rem;">🔥 加入我們，書寫你的傳奇！</h3>
+        <h2 id="joinDescText" style="font-size: 1.2rem; border-bottom: none; padding-bottom: 0;">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</h2>
+
+        <div class="buttons">
+            <a href="https://discord.gg/UDBPVTsu2x" target="_blank" class="btn btn-discord" id="discordLinkBtn">加入 Discord</a>
+        </div>
+
+        <h1>特色</h1>
+        <div class="card-grid">
+            <div class="small-card">
+                <h3 id="feature1Title">⚔️ 多樣武器</h3>
+                <p id="feature1Desc">支持步槍、小刀、狙擊槍，提供多樣選擇</p>
+            </div>
+            <div class="small-card">
+                <h3 id="feature2Title">🎭 和諧氣氛</h3>
+                <p id="feature2Desc">聊天室常有趣事，不常有糾紛</p>
+            </div>
+            <div class="small-card">
+                <h3 id="feature3Title">📊 明確分類</h3>
+                <p id="feature3Desc">戰隊整體有明確分類</p>
+            </div>
+            <div class="small-card">
+                <h3 id="feature4Title">🎯 團戰配合</h3>
+                <p id="feature4Desc">定期舉辦團戰，培養團隊默契與配合</p>
+            </div>
+        </div>
+        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
+
+        <h1>𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮 宣傳片</h1>
+        <div class="video-container">
+            <iframe id="youtubeFrame" src="https://www.youtube.com/embed/u1A5vfQ758A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <div class="footer">
+            <p style="font-size:0.85rem; color:#888; cursor:pointer;" onclick="window.location.href='admin.html'">後台登入</p>
+            <br>
+            <a href="https://discord.gg/UDBPVTsu2x" target="_blank" style="color:#888; text-decoration:none;">© 2026 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮 | Discord</a>
+        </div>
+    </div>
+
+    <script>
+function loadSettings() {
+    const logoImg = document.getElementById('teamLogoImg');
+    const navLogoImg = document.getElementById('navLogoImg');
+    const logoUrl = localStorage.getItem('teamLogoUrl') || '';
+    if (logoUrl) {
+        logoImg.src = logoUrl;
+        logoImg.style.display = 'block';
+        navLogoImg.src = logoUrl;
+        navLogoImg.style.display = 'block';
+    } else {
+        logoImg.style.display = 'none';
+        navLogoImg.style.display = 'none';
+    }
+    
+    document.getElementById('homeIntroText').textContent = localStorage.getItem('homeIntro') || '你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！';
+    document.getElementById('joinTitleText').textContent = localStorage.getItem('joinTitle') || '🔥 加入我們，書寫你的傳奇！';
+    document.getElementById('joinDescText').textContent = localStorage.getItem('joinDesc') || '加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！';
+    document.getElementById('discordLinkBtn').href = localStorage.getItem('discordLink') || 'https://discord.gg/UDBPVTsu2x';
+    
+    document.getElementById('feature1Title').textContent = localStorage.getItem('feature1Title') || '⚔️ 多樣武器';
+    document.getElementById('feature1Desc').textContent = localStorage.getItem('feature1Desc') || '支持步槍、小刀、狙擊槍，提供多樣選擇';
+    document.getElementById('feature2Title').textContent = localStorage.getItem('feature2Title') || '🎭 和諧氣氛';
+    document.getElementById('feature2Desc').textContent = localStorage.getItem('feature2Desc') || '聊天室常有趣事，不常有糾紛';
+    document.getElementById('feature3Title').textContent = localStorage.getItem('feature3Title') || '📊 明確分類';
+    document.getElementById('feature3Desc').textContent = localStorage.getItem('feature3Desc') || '戰隊整體有明確分類';
+    document.getElementById('feature4Title').textContent = localStorage.getItem('feature4Title') || '🎯 團戰配合';
+    document.getElementById('feature4Desc').textContent = localStorage.getItem('feature4Desc') || '定期舉辦團戰，培養團隊默契與配合';
+    
+    const youtubeId = localStorage.getItem('youtubeId') || 'u1A5vfQ758A';
+    document.getElementById('youtubeFrame').src = 'https://www.youtube.com/embed/' + youtubeId;
+    
+    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
+    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
+    document.querySelectorAll('h2').forEach(el => {
+        if (el.id !== 'homeIntroText' && el.id !== 'joinDescText') {
+            el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem';
+        }
+    });
+    document.querySelectorAll('h3').forEach(el => {
+        if (el.id !== 'joinTitleText') {
+            el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem';
+        }
+    });
+    document.querySelectorAll('p').forEach(el => {
+        el.style.fontSize = localStorage.getItem('pSize') || '1rem';
+    });
+}
+loadSettings();
+    </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成員 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-logo-img {
+    max-height: 40px;
+    border-radius: 6px;
+}
+
+.nav-logo-text {
+    font-size: 1.3rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: block;
+    font-weight: 500;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #ffd700;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 100px 20px 40px 20px;
+}
+
+.logo {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.header-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.team-logo {
+    display: block;
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 8px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.member-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #eee;
+    font-weight: 500;
+    color: #555;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.member-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1), 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+.member-item:active {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1), 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 40px 0;
+}
+
+.btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.btn-discord {
+    background: #5865F2;
+    color: white;
+}
+
+.btn-discord:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.2);
+}
+
+.btn-admin {
+    background: #ff6b6b;
+    color: white;
+}
+
+.btn-admin:hover {
+    background: #ee5a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        font-size: 2.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <img src="" alt="KS Logo" class="nav-logo-img" id="navLogoImg" style="display:none;">
+            <span class="nav-logo-text">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</span>
+        </div>
+        <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="members.html" class="active">成員</a></li>
+            <li><a href="exam.html">考試</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header-section">
+            <img src="" alt="KS Team Logo" class="team-logo" id="teamLogoImg" style="display:none;">
+            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+        </div>
+
+        <h1>核心成員</h1>
+        <div class="member-grid" id="coreMembersGrid"></div>
+        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
+
+        <h1>考官</h1>
+        <div class="member-grid" id="examinersGrid"></div>
+        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
+
+        <h1>特殊成員</h1>
+        <div class="member-grid" id="specialMembersGrid"></div>
+
+
+
+        <div class="footer">
+            <p style="font-size:0.85rem; color:#888; cursor:pointer;" onclick="window.location.href='admin.html'">後台登入</p>
+            <br>
+            <a href="https://discord.gg/UDBPVTsu2x" target="_blank" style="color:#888; text-decoration:none;">© 2026 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮 | Discord</a>
+        </div>
+    </div>
+
+    <script>
+function renderMembers(containerId, membersString) {
+    const container = document.getElementById(containerId);
+    const members = membersString.split(',').map(m => m.trim()).filter(m => m);
+    container.innerHTML = members.map(member => 
+        `<div class="member-item">${member}</div>`
+    ).join('');
+}
+
+function loadSettings() {
+    const navLogoImg = document.getElementById('navLogoImg');
+    const teamLogoImg = document.getElementById('teamLogoImg');
+    const logoUrl = localStorage.getItem('teamLogoUrl') || '';
+    if (logoUrl) {
+        navLogoImg.src = logoUrl;
+        navLogoImg.style.display = 'block';
+        teamLogoImg.src = logoUrl;
+        teamLogoImg.style.display = 'block';
+    } else {
+        navLogoImg.style.display = 'none';
+        teamLogoImg.style.display = 'none';
+    }
+    
+    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
+    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
+    document.querySelectorAll('h2').forEach(el => el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem');
+    document.querySelectorAll('h3').forEach(el => el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem');
+    document.querySelectorAll('p').forEach(el => el.style.fontSize = localStorage.getItem('pSize') || '1rem');
+    
+    renderMembers('coreMembersGrid', localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
+    renderMembers('examinersGrid', localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
+    renderMembers('specialMembersGrid', localStorage.getItem('specialMembers') || 'K~asper, 2.5, 空神, 岩漿, Kn考官 (uS)');
+}
+loadSettings();
+    </script>
+</body>
+</html>

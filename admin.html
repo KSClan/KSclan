@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後台管理 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: block;
+    font-weight: 500;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #ffd700;
+    color: #333;
+}
+
+.login-container {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffd700;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.btn-login,
+.btn-save {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: #ffd700;
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover,
+.btn-save:hover {
+    background: #e6c200;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.error-message {
+    background: #ff6b6b;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+.success-message {
+    background: #4ecdc4;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+
+.admin-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 1000px;
+    display: none;
+    margin-top: 80px;
+}
+
+.admin-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.admin-panel h1 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: #333;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 10px;
+}
+
+.admin-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.btn-logout:hover {
+    background: #ee5a5a;
+}
+
+@media (max-width: 768px) {
+    .admin-panel,
+    .login-container {
+        padding: 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="members.html">成員</a></li>
+            <li><a href="exam.html">考試</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-container" id="loginContainer">
+        <h1>後台登入管理</h1>
+        <div class="error-message" id="errorMessage">帳號或密碼錯誤！</div>
+        <div class="form-group">
+            <label>用戶名</label>
+            <input type="text" id="username" placeholder="請輸入用戶名">
+        </div>
+        <div class="form-group">
+            <label>密碼</label>
+            <input type="password" id="password" placeholder="請輸入密碼">
+        </div>
+        <button class="btn-login" onclick="login()">登入</button>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+        <button class="btn-logout" onclick="logout()">登出</button>
+        <h1>後台管理</h1>
+        
+        <div class="success-message" id="successMessage">儲存成功！</div>
+        
+        <div class="admin-section">
+            <h2>首頁設定</h2>
+            <div class="form-group">
+                <label>戰隊圖片連結</label>
+                <input type="text" id="teamLogoUrl" placeholder="https://example.com/logo.jpg">
+            </div>
+            <div class="form-group">
+                <label>簡介文字</label>
+                <textarea id="homeIntro">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</textarea>
+            </div>
+            <div class="form-group">
+                <label>加入我們標題</label>
+                <input type="text" id="joinTitle" value="🔥 加入我們，書寫你的傳奇！">
+            </div>
+            <div class="form-group">
+                <label>加入我們說明</label>
+                <textarea id="joinDesc">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</textarea>
+            </div>
+            <div class="form-group">
+                <label>Discord 連結</label>
+                <input type="text" id="discordLink" value="https://discord.gg/UDBPVTsu2x">
+            </div>
+            <button class="btn-save" onclick="saveHomeSettings()">儲存首頁設定</button>
+        </div>
+
+        <div class="admin-section">
+            <h2>文字大小設定</h2>
+            <div class="form-group">
+                <label>Logo 大小</label>
+                <input type="text" id="logoSize" value="2.5rem">
+            </div>
+            <div class="form-group">
+                <label>標題 h1 大小</label>
+                <input type="text" id="h1Size" value="1.8rem">
+            </div>
+            <div class="form-group">
+                <label>標題 h2 大小</label>
+                <input type="text" id="h2Size" value="1.5rem">
+            </div>
+            <div class="form-group">
+                <label>標題 h3 大小</label>
+                <input type="text" id="h3Size" value="1.2rem">
+            </div>
+            <div class="form-group">
+                <label>一般文字大小</label>
+                <input type="text" id="pSize" value="1rem">
+            </div>
+            <button class="btn-save" onclick="saveFontSettings()">儲存文字大小設定</button>
+        </div>
+
+        <div class="admin-section">
+            <h2>特色設定</h2>
+            <div class="form-group">
+                <label>特色 1 標題</label>
+                <input type="text" id="feature1Title" value="⚔️ 多樣武器">
+            </div>
+            <div class="form-group">
+                <label>特色 1 說明</label>
+                <textarea id="feature1Desc">支持步槍、小刀、狙擊槍，提供多樣選擇</textarea>
+            </div>
+            <div class="form-group">
+                <label>特色 2 標題</label>
+                <input type="text" id="feature2Title" value="🎭 和諧氣氛">
+            </div>
+            <div class="form-group">
+                <label>特色 2 說明</label>
+                <textarea id="feature2Desc">聊天室常有趣事，不常有糾紛</textarea>
+            </div>
+            <div class="form-group">
+                <label>特色 3 標題</label>
+                <input type="text" id="feature3Title" value="📊 明確分類">
+            </div>
+            <div class="form-group">
+                <label>特色 3 說明</label>
+                <textarea id="feature3Desc">戰隊整體有明確分類</textarea>
+            </div>
+            <div class="form-group">
+                <label>特色 4 標題</label>
+                <input type="text" id="feature4Title" value="🎯 團戰配合">
+            </div>
+            <div class="form-group">
+                <label>特色 4 說明</label>
+                <textarea id="feature4Desc">定期舉辦團戰，培養團隊默契與配合</textarea>
+            </div>
+            <button class="btn-save" onclick="saveFeatureSettings()">儲存特色設定</button>
+        </div>
+
+        <div class="admin-section">
+            <h2>YouTube 設定</h2>
+            <div class="form-group">
+                <label>YouTube 影片 ID</label>
+                <input type="text" id="youtubeId" placeholder="例如: u1A5vfQ758A" value="u1A5vfQ758A">
+            </div>
+            <button class="btn-save" onclick="saveVideoSettings()">儲存影片設定</button>
+        </div>
+        
+        <div class="admin-section">
+            <h2>成員頁設定</h2>
+            <div class="form-group">
+                <label>核心成員 (用逗號分隔)</label>
+                <textarea id="coreMembers" placeholder="KS_num, KS_Diuyou8964, KS_lin">KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK</textarea>
+            </div>
+            <div class="form-group">
+                <label>考官 (用逗號分隔)</label>
+                <textarea id="examiners" placeholder="KS_lin, FRZ_Stanley, KS_candy">KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda</textarea>
+            </div>
+            <div class="form-group">
+                <label>特殊成員 (用逗號分隔)</label>
+                <textarea id="specialMembers" placeholder="K~asper, 2.5, 空神">K~asper, 2.5, 空神, 岩漿, Kn考官 (uS)</textarea>
+            </div>
+            <button class="btn-save" onclick="saveMemberSettings()">儲存成員設定</button>
+        </div>
+        
+        <div class="admin-section">
+            <h2>考試頁設定</h2>
+            <div class="form-group">
+                <label>考試簡介</label>
+                <textarea id="examIntro" placeholder="本團並無分菁英團員或一般團員，而採用軍階">本團並無分菁英團員或一般團員，而採用軍階</textarea>
+            </div>
+            <div class="form-group">
+                <label>初級考試規則</label>
+                <textarea id="beginnerRules" placeholder="等級最低限制 - 50等">等級最低限制 - 50等&#10;牌位最低限制 - 黃金 1&#10;考試通過後更名方式 - KsR&#10;&#10;[步槍] 考生1局1勝&#10;[狙擊槍] - 考生1局1勝&#10;[小刀] - 考生1局1勝</textarea>
+            </div>
+            <div class="form-group">
+                <label>中級考試規則</label>
+                <textarea id="intermediateRules" placeholder="等級最低限制 - 150等">等級最低限制 - 150等&#10;牌位最低限制 - 白金 1&#10;考試通過後更名方式 - KS&#10;&#10;[步槍] - 考生3局2勝&#10;[狙擊槍] - 考生3局2勝&#10;[小刀] - 考生3局2勝</textarea>
+            </div>
+            <div class="form-group">
+                <label>晉級考試規則</label>
+                <textarea id="advancedRules" placeholder="等級最低限制 - 250等">等級最低限制 - 250等&#10;牌位最低限制 - 鑽石 1&#10;考試通過後更名方式 - KS&#10;&#10;[步槍] - 考生3局2勝&#10;[狙擊槍] - 考生3局2勝&#10;[小刀] - 考生3局2勝</textarea>
+            </div>
+            <div class="form-group">
+                <label>基本考試規則 (用逗號分隔)</label>
+                <textarea id="basicRules" placeholder="禁止拿無關武器來攻擊考官">禁止拿無關武器來攻擊考官, 手機端禁止使用輔助瞄準, 步槍可使用DL或只使用步槍, 如違反以上規則將警告一次，若再犯，將取消考試資格, 如要再考試者請於考試結束後3小時再報名</textarea>
+            </div>
+            <button class="btn-save" onclick="saveExamSettings()">儲存考試設定</button>
+        </div>
+    </div>
+
+    <script>
+const VALID_USERNAME = 'Bohan0808';
+const VALID_PASSWORD = '808080';
+
+function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('errorMessage');
+    
+    if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('adminPanel').style.display = 'block';
+        localStorage.setItem('isLoggedIn', 'true');
+        loadSettings();
+    } else {
+        errorMessage.style.display = 'block';
+    }
+}
+
+function logout() {
+    document.getElementById('loginContainer').style.display = 'block';
+    document.getElementById('adminPanel').style.display = 'none';
+    document.getElementById('username').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('errorMessage').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'none';
+    localStorage.removeItem('isLoggedIn');
+}
+
+function showSuccess() {
+    const msg = document.getElementById('successMessage');
+    msg.style.display = 'block';
+    setTimeout(() => {
+        msg.style.display = 'none';
+    }, 3000);
+}
+
+function saveHomeSettings() {
+    localStorage.setItem('teamLogoUrl', document.getElementById('teamLogoUrl').value);
+    localStorage.setItem('homeIntro', document.getElementById('homeIntro').value);
+    localStorage.setItem('joinTitle', document.getElementById('joinTitle').value);
+    localStorage.setItem('joinDesc', document.getElementById('joinDesc').value);
+    localStorage.setItem('discordLink', document.getElementById('discordLink').value);
+    showSuccess();
+}
+
+function saveFontSettings() {
+    localStorage.setItem('logoSize', document.getElementById('logoSize').value);
+    localStorage.setItem('h1Size', document.getElementById('h1Size').value);
+    localStorage.setItem('h2Size', document.getElementById('h2Size').value);
+    localStorage.setItem('h3Size', document.getElementById('h3Size').value);
+    localStorage.setItem('pSize', document.getElementById('pSize').value);
+    showSuccess();
+}
+
+function saveFeatureSettings() {
+    localStorage.setItem('feature1Title', document.getElementById('feature1Title').value);
+    localStorage.setItem('feature1Desc', document.getElementById('feature1Desc').value);
+    localStorage.setItem('feature2Title', document.getElementById('feature2Title').value);
+    localStorage.setItem('feature2Desc', document.getElementById('feature2Desc').value);
+    localStorage.setItem('feature3Title', document.getElementById('feature3Title').value);
+    localStorage.setItem('feature3Desc', document.getElementById('feature3Desc').value);
+    localStorage.setItem('feature4Title', document.getElementById('feature4Title').value);
+    localStorage.setItem('feature4Desc', document.getElementById('feature4Desc').value);
+    showSuccess();
+}
+
+function saveVideoSettings() {
+    localStorage.setItem('youtubeId', document.getElementById('youtubeId').value);
+    showSuccess();
+}
+
+function saveMemberSettings() {
+    localStorage.setItem('coreMembers', document.getElementById('coreMembers').value);
+    localStorage.setItem('examiners', document.getElementById('examiners').value);
+    localStorage.setItem('specialMembers', document.getElementById('specialMembers').value);
+    showSuccess();
+}
+
+function saveExamSettings() {
+    localStorage.setItem('examIntro', document.getElementById('examIntro').value);
+    localStorage.setItem('beginnerRules', document.getElementById('beginnerRules').value);
+    localStorage.setItem('intermediateRules', document.getElementById('intermediateRules').value);
+    localStorage.setItem('advancedRules', document.getElementById('advancedRules').value);
+    localStorage.setItem('basicRules', document.getElementById('basicRules').value);
+    showSuccess();
+}
+
+function loadSettings() {
+    document.getElementById('teamLogoUrl').value = localStorage.getItem('teamLogoUrl') || '';
+    document.getElementById('homeIntro').value = localStorage.getItem('homeIntro') || '你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！';
+    document.getElementById('joinTitle').value = localStorage.getItem('joinTitle') || '🔥 加入我們，書寫你的傳奇！';
+    document.getElementById('joinDesc').value = localStorage.getItem('joinDesc') || '加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！';
+    document.getElementById('discordLink').value = localStorage.getItem('discordLink') || 'https://discord.gg/UDBPVTsu2x';
+    
+    document.getElementById('logoSize').value = localStorage.getItem('logoSize') || '2.5rem';
+    document.getElementById('h1Size').value = localStorage.getItem('h1Size') || '1.8rem';
+    document.getElementById('h2Size').value = localStorage.getItem('h2Size') || '1.5rem';
+    document.getElementById('h3Size').value = localStorage.getItem('h3Size') || '1.2rem';
+    document.getElementById('pSize').value = localStorage.getItem('pSize') || '1rem';
+    
+    document.getElementById('feature1Title').value = localStorage.getItem('feature1Title') || '⚔️ 多樣武器';
+    document.getElementById('feature1Desc').value = localStorage.getItem('feature1Desc') || '支持步槍、小刀、狙擊槍，提供多樣選擇';
+    document.getElementById('feature2Title').value = localStorage.getItem('feature2Title') || '🎭 和諧氣氛';
+    document.getElementById('feature2Desc').value = localStorage.getItem('feature2Desc') || '聊天室常有趣事，不常有糾紛';
+    document.getElementById('feature3Title').value = localStorage.getItem('feature3Title') || '📊 明確分類';
+    document.getElementById('feature3Desc').value = localStorage.getItem('feature3Desc') || '戰隊整體有明確分類';
+    document.getElementById('feature4Title').value = localStorage.getItem('feature4Title') || '🎯 團戰配合';
+    document.getElementById('feature4Desc').value = localStorage.getItem('feature4Desc') || '定期舉辦團戰，培養團隊默契與配合';
+    
+    document.getElementById('youtubeId').value = localStorage.getItem('youtubeId') || 'u1A5vfQ758A';
+    
+    document.getElementById('coreMembers').value = localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK';
+    document.getElementById('examiners').value = localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda';
+    document.getElementById('specialMembers').value = localStorage.getItem('specialMembers') || 'K~asper, 2.5, 空神, 岩漿, Kn考官 (uS)';
+    
+    document.getElementById('examIntro').value = localStorage.getItem('examIntro') || '本團並無分菁英團員或一般團員，而採用軍階';
+    document.getElementById('beginnerRules').value = localStorage.getItem('beginnerRules') || '等級最低限制 - 50等\n牌位最低限制 - 黃金 1\n考試通過後更名方式 - KsR\n\n[步槍] 考生1局1勝\n[狙擊槍] - 考生1局1勝\n[小刀] - 考生1局1勝';
+    document.getElementById('intermediateRules').value = localStorage.getItem('intermediateRules') || '等級最低限制 - 150等\n牌位最低限制 - 白金 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝';
+    document.getElementById('advancedRules').value = localStorage.getItem('advancedRules') || '等級最低限制 - 250等\n牌位最低限制 - 鑽石 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝';
+    document.getElementById('basicRules').value = localStorage.getItem('basicRules') || '禁止拿無關武器來攻擊考官, 手機端禁止使用輔助瞄準, 步槍可使用DL或只使用步槍, 如違反以上規則將警告一次，若再犯，將取消考試資格, 如要再考試者請於考試結束後3小時再報名';
+}
+
+if (localStorage.getItem('isLoggedIn') === 'true') {
+    document.getElementById('loginContainer').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadSettings();
+}
+    </script>
+</body>
+</html>
