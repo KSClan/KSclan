@@ -406,7 +406,7 @@ h3 {
 function loadSettings() {
     const logoImg = document.getElementById('teamLogoImg');
     const navLogoImg = document.getElementById('navLogoImg');
-    const logoUrl = localStorage.getItem('teamLogoUrl') || '';
+    const logoUrl = localStorage.getItem('teamLogoUrl') || 'ks-logo.png';
     if (logoUrl) {
         logoImg.src = logoUrl;
         logoImg.style.display = 'block';
