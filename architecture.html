@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>成員 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
+    <title>架構 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
     <style>
 @font-face {
     font-family: 'ChenYuluoyan';
@@ -124,84 +124,43 @@ h1 {
     text-align: center;
 }
 
-.section {
-    background: white;
-    border-radius: 12px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-}
-
-.member-grid {
+.card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.member-item {
-    background: #f8f9fa;
-    padding: 15px;
+.feature-card {
+    background: white;
+    padding: 30px;
     border-radius: 16px;
-    text-align: center;
-    border: 1px solid #eee;
-    font-weight: 500;
-    color: #555;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
-    cursor: pointer;
+    border-left: 4px solid #ffd700;
 }
 
-.member-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1), 0 0 15px rgba(255, 215, 0, 0.4);
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12), 0 0 20px rgba(255, 215, 0, 0.3);
 }
 
-.member-item:active {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1), 0 0 8px rgba(255, 215, 0, 0.3);
-}
-
-.buttons {
+.feature-card h2 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
     display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 40px 0;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn {
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-.btn-discord {
-    background: #5865F2;
-    color: white;
-}
-
-.btn-discord:hover {
-    background: #4752c4;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.2);
-}
-
-.btn-admin {
-    background: #ff6b6b;
-    color: white;
-}
-
-.btn-admin:hover {
-    background: #ee5a5a;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(255, 107, 107, 0.2);
+.feature-card p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .footer {
@@ -242,6 +201,10 @@ h1 {
         font-size: 0.9rem;
         white-space: nowrap;
     }
+    
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
 }
     </style>
 </head>
@@ -253,9 +216,9 @@ h1 {
         </div>
         <ul>
             <li><a href="index.html">首頁</a></li>
-            <li><a href="members.html" class="active">成員</a></li>
+            <li><a href="members.html">成員</a></li>
             <li><a href="exam.html">考試</a></li>
-            <li><a href="architecture.html">架構</a></li>
+            <li><a href="architecture.html" class="active">架構</a></li>
         </ul>
     </nav>
 
@@ -265,14 +228,24 @@ h1 {
             <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
         </div>
 
-        <h1>核心成員</h1>
-        <div class="member-grid" id="coreMembersGrid"></div>
-        <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
-
-        <h1>考官</h1>
-        <div class="member-grid" id="examinersGrid"></div>
-
-
+        <h1>戰隊架構</h1>
+        
+        <div class="card-grid">
+            <div class="feature-card">
+                <h2 id="arch1Title">📝 開單系統完善</h2>
+                <p id="arch1Desc">本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h2 id="arch2Title">🔒 管理系統完善</h2>
+                <p id="arch2Desc">本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。</p>
+            </div>
+            
+            <div class="feature-card">
+                <h2 id="arch3Title">⚠️ 警告系統完善</h2>
+                <p id="arch3Desc">本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。</p>
+            </div>
+        </div>
 
         <div class="footer">
             <p style="font-size:0.85rem; color:#888; cursor:pointer;" onclick="window.location.href='admin.html'">後台登入</p>
@@ -282,14 +255,6 @@ h1 {
     </div>
 
     <script>
-function renderMembers(containerId, membersString) {
-    const container = document.getElementById(containerId);
-    const members = membersString.split(',').map(m => m.trim()).filter(m => m);
-    container.innerHTML = members.map(member => 
-        `<div class="member-item">${member}</div>`
-    ).join('');
-}
-
 function loadSettings() {
     const navLogoImg = document.getElementById('navLogoImg');
     const teamLogoImg = document.getElementById('teamLogoImg');
@@ -310,8 +275,19 @@ function loadSettings() {
     document.querySelectorAll('h3').forEach(el => el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem');
     document.querySelectorAll('p').forEach(el => el.style.fontSize = localStorage.getItem('pSize') || '1rem');
     
-    renderMembers('coreMembersGrid', localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
-    renderMembers('examinersGrid', localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
+    const arch1Title = document.getElementById('arch1Title');
+    const arch1Desc = document.getElementById('arch1Desc');
+    const arch2Title = document.getElementById('arch2Title');
+    const arch2Desc = document.getElementById('arch2Desc');
+    const arch3Title = document.getElementById('arch3Title');
+    const arch3Desc = document.getElementById('arch3Desc');
+    
+    if (arch1Title) arch1Title.textContent = localStorage.getItem('arch1Title') || '📝 開單系統完善';
+    if (arch1Desc) arch1Desc.textContent = localStorage.getItem('arch1Desc') || '本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。';
+    if (arch2Title) arch2Title.textContent = localStorage.getItem('arch2Title') || '🔒 管理系統完善';
+    if (arch2Desc) arch2Desc.textContent = localStorage.getItem('arch2Desc') || '本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。';
+    if (arch3Title) arch3Title.textContent = localStorage.getItem('arch3Title') || '⚠️ 警告系統完善';
+    if (arch3Desc) arch3Desc.textContent = localStorage.getItem('arch3Desc') || '本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。';
 }
 loadSettings();
     </script>

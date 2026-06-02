@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>後台管理 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
     <style>
+@font-face {
+    font-family: 'ChenYuluoyan';
+    src: url('ChenYuluoyan-2.0-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.chenyu-font {
+    font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -259,6 +270,7 @@ nav ul li a.active {
             <li><a href="index.html">首頁</a></li>
             <li><a href="members.html">成員</a></li>
             <li><a href="exam.html">考試</a></li>
+            <li><a href="architecture.html">架構</a></li>
         </ul>
     </nav>
 
@@ -436,6 +448,35 @@ nav ul li a.active {
             </div>
             <button class="btn-save" onclick="saveExamSettings()">儲存考試設定</button>
         </div>
+        
+        <div class="admin-section">
+            <h2>架構頁設定</h2>
+            <div class="form-group">
+                <label>開單系統標題 (含表情符號)</label>
+                <input type="text" id="arch1Title" value="📝 開單系統完善">
+            </div>
+            <div class="form-group">
+                <label>開單系統說明</label>
+                <textarea id="arch1Desc" placeholder="說明內容">本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。</textarea>
+            </div>
+            <div class="form-group">
+                <label>管理系統標題 (含表情符號)</label>
+                <input type="text" id="arch2Title" value="🔒 管理系統完善">
+            </div>
+            <div class="form-group">
+                <label>管理系統說明</label>
+                <textarea id="arch2Desc" placeholder="說明內容">本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。</textarea>
+            </div>
+            <div class="form-group">
+                <label>警告系統標題 (含表情符號)</label>
+                <input type="text" id="arch3Title" value="⚠️ 警告系統完善">
+            </div>
+            <div class="form-group">
+                <label>警告系統說明</label>
+                <textarea id="arch3Desc" placeholder="說明內容">本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。</textarea>
+            </div>
+            <button class="btn-save" onclick="saveArchitectureSettings()">儲存架構設定</button>
+        </div>
     </div>
 
     <script>
@@ -533,6 +574,16 @@ function saveExamSettings() {
     showSuccess();
 }
 
+function saveArchitectureSettings() {
+    localStorage.setItem('arch1Title', document.getElementById('arch1Title').value);
+    localStorage.setItem('arch1Desc', document.getElementById('arch1Desc').value);
+    localStorage.setItem('arch2Title', document.getElementById('arch2Title').value);
+    localStorage.setItem('arch2Desc', document.getElementById('arch2Desc').value);
+    localStorage.setItem('arch3Title', document.getElementById('arch3Title').value);
+    localStorage.setItem('arch3Desc', document.getElementById('arch3Desc').value);
+    showSuccess();
+}
+
 function loadSettings() {
     document.getElementById('teamLogoUrl').value = localStorage.getItem('teamLogoUrl') || '';
     document.getElementById('homeIntro').value = localStorage.getItem('homeIntro') || '你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！';
@@ -570,6 +621,13 @@ function loadSettings() {
     document.getElementById('intermediateRules').value = localStorage.getItem('intermediateRules') || '等級最低限制 - 150等\n牌位最低限制 - 白金 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝';
     document.getElementById('advancedRules').value = localStorage.getItem('advancedRules') || '等級最低限制 - 250等\n牌位最低限制 - 鑽石 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝';
     document.getElementById('basicRules').value = localStorage.getItem('basicRules') || '禁止拿無關武器來攻擊考官, 手機端禁止使用輔助瞄準, 步槍可使用DL或只使用步槍, 如違反以上規則將警告一次，若再犯，將取消考試資格, 如要再考試者請於考試結束後3小時再報名';
+    
+    document.getElementById('arch1Title').value = localStorage.getItem('arch1Title') || '📝 開單系統完善';
+    document.getElementById('arch1Desc').value = localStorage.getItem('arch1Desc') || '本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。';
+    document.getElementById('arch2Title').value = localStorage.getItem('arch2Title') || '🔒 管理系統完善';
+    document.getElementById('arch2Desc').value = localStorage.getItem('arch2Desc') || '本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。';
+    document.getElementById('arch3Title').value = localStorage.getItem('arch3Title') || '⚠️ 警告系統完善';
+    document.getElementById('arch3Desc').value = localStorage.getItem('arch3Desc') || '本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。';
 }
 
 if (localStorage.getItem('isLoggedIn') === 'true') {

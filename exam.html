@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>考試 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
     <style>
+@font-face {
+    font-family: 'ChenYuluoyan';
+    src: url('ChenYuluoyan-2.0-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.chenyu-font {
+    font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -310,6 +321,7 @@ h3 {
             <li><a href="index.html">首頁</a></li>
             <li><a href="members.html">成員</a></li>
             <li><a href="exam.html" class="active">考試</a></li>
+            <li><a href="architecture.html">架構</a></li>
         </ul>
     </nav>
 
@@ -383,7 +395,7 @@ function renderRules(containerId, rulesString) {
     const container = document.getElementById(containerId);
     const lines = rulesString.split('\n');
     container.innerHTML = lines.map(line => 
-        `<p>${line}</p>`
+        `<p class="chenyu-font">${line}</p>`
     ).join('');
 }
 
@@ -391,7 +403,7 @@ function renderBasicRules(containerId, rulesString) {
     const container = document.getElementById(containerId);
     const rules = rulesString.split(',').map(r => r.trim()).filter(r => r);
     container.innerHTML = rules.map(rule => 
-        `<li>${rule}</li>`
+        `<li class="chenyu-font">${rule}</li>`
     ).join('');
 }
 
