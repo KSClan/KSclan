@@ -42,6 +42,9 @@ body {
 
 .chenyu-font {
     font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem !important;
+    font-weight: 600;
+    line-height: 1.6;
 }
 
 .big-text {
@@ -369,7 +372,7 @@ h3 {
 <body>
     <nav>
         <div class="nav-left">
-            <img src="" alt="KS Logo" class="nav-logo-img" id="navLogoImg" style="display:none;">
+            <img src="ks-logo.png" alt="KS Logo" class="nav-logo-img" id="navLogoImg">
             <span class="nav-logo-text">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</span>
         </div>
         <ul>
@@ -382,26 +385,26 @@ h3 {
 
     <div class="container">
         <div class="header-section">
-            <img src="" alt="KS Team Logo" class="team-logo" id="teamLogoImg" style="display:none;">
-            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+            <img src="ks-logo.png" alt="KS Team Logo" class="team-logo" id="teamLogoImg">
+            <div class="logo chenyu-font">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
         </div>
 
         <h1>簡介</h1>
-        <h2 id="homeIntroText" class="chenyu-font" style="font-size: 1.3rem; border-bottom: none; padding-bottom: 0;">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</h2>
+        <h2 id="homeIntroText" class="chenyu-font" style="border-bottom: none; padding-bottom: 0; font-size: 1.5rem !important;">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</h2>
         <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
 
-        <h3>💡 為什麼選擇 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮？</h3>
+        <h3 class="chenyu-font" style="font-size: 2.2rem !important;">💡 為什麼選擇 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮？</h3>
         <ul class="features-list">
-            <li class="chenyu-font">支援步槍、小刀、狙擊槍等各類考試</li>
-            <li class="chenyu-font">完善的分級制度與明確分類，讓你清楚掌握自己的實力定位</li>
-            <li class="chenyu-font">聊天室熱鬧有趣，環境和諧、鮮少糾紛</li>
-            <li class="chenyu-font">不定期舉辦友誼賽</li>
-            <li class="chenyu-font">提供彈性的改名制度</li>
+            <li class="chenyu-font" style="font-size: 1.5rem !important;">支援步槍、小刀、狙擊槍等各類考試</li>
+            <li class="chenyu-font" style="font-size: 1.5rem !important;">完善的分級制度與明確分類，讓你清楚掌握自己的實力定位</li>
+            <li class="chenyu-font" style="font-size: 1.5rem !important;">聊天室熱鬧有趣，環境和諧、鮮少糾紛</li>
+            <li class="chenyu-font" style="font-size: 1.5rem !important;">不定期舉辦友誼賽</li>
+            <li class="chenyu-font" style="font-size: 1.5rem !important;">提供彈性的改名制度</li>
         </ul>
         <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
 
-        <h3 id="joinTitleText" class="chenyu-font" style="font-size: 1.5rem;">🔥 加入我們，書寫你的傳奇！</h3>
-        <h2 id="joinDescText" class="chenyu-font" style="font-size: 1.2rem; border-bottom: none; padding-bottom: 0;">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</h2>
+        <h3 id="joinTitleText" class="chenyu-font" style="font-size: 2rem !important;">🔥 加入我們，書寫你的傳奇！</h3>
+        <h2 id="joinDescText" class="chenyu-font" style="border-bottom: none; padding-bottom: 0; font-size: 1.5rem !important;">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</h2>
 
         <div class="buttons">
             <a href="https://discord.gg/UDBPVTsu2x" target="_blank" class="btn btn-discord" id="discordLinkBtn">加入 Discord</a>
@@ -444,16 +447,12 @@ h3 {
 function loadSettings() {
     const logoImg = document.getElementById('teamLogoImg');
     const navLogoImg = document.getElementById('navLogoImg');
-    const logoUrl = localStorage.getItem('teamLogoUrl') || 'ks-logo.png';
-    if (logoUrl) {
-        logoImg.src = logoUrl;
-        logoImg.style.display = 'block';
-        navLogoImg.src = logoUrl;
-        navLogoImg.style.display = 'block';
-    } else {
-        logoImg.style.display = 'none';
-        navLogoImg.style.display = 'none';
-    }
+    // 清除可能有问题的localStorage设置，强制使用默认Logo
+    localStorage.removeItem('teamLogoUrl');
+    logoImg.src = 'ks-logo.png';
+    navLogoImg.src = 'ks-logo.png';
+    logoImg.style.display = 'block';
+    navLogoImg.style.display = 'block';
     
     document.getElementById('homeIntroText').textContent = localStorage.getItem('homeIntro') || '你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！';
     document.getElementById('joinTitleText').textContent = localStorage.getItem('joinTitle') || '🔥 加入我們，書寫你的傳奇！';

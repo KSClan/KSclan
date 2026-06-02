@@ -14,6 +14,9 @@
 
 .chenyu-font {
     font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem !important;
+    font-weight: 600;
+    line-height: 1.6;
 }
 
 * {
@@ -457,7 +460,7 @@ nav ul li a.active {
             </div>
             <div class="form-group">
                 <label>開單系統說明</label>
-                <textarea id="arch1Desc" placeholder="說明內容">本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。</textarea>
+                <textarea id="arch1Desc" placeholder="說明內容">本團開單系統為問題式，開單後考官不必多做基本詢問。所有單票會被快速受理，給予團員最好的服務體驗。</textarea>
             </div>
             <div class="form-group">
                 <label>管理系統標題 (含表情符號)</label>
@@ -465,7 +468,7 @@ nav ul li a.active {
             </div>
             <div class="form-group">
                 <label>管理系統說明</label>
-                <textarea id="arch2Desc" placeholder="說明內容">本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。</textarea>
+                <textarea id="arch2Desc" placeholder="說明內容">本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。</textarea>
             </div>
             <div class="form-group">
                 <label>警告系統標題 (含表情符號)</label>
@@ -473,7 +476,7 @@ nav ul li a.active {
             </div>
             <div class="form-group">
                 <label>警告系統說明</label>
-                <textarea id="arch3Desc" placeholder="說明內容">本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。</textarea>
+                <textarea id="arch3Desc" placeholder="說明內容">本團警告區採指令式，警告單版面統一。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在。</textarea>
             </div>
             <button class="btn-save" onclick="saveArchitectureSettings()">儲存架構設定</button>
         </div>
@@ -623,11 +626,11 @@ function loadSettings() {
     document.getElementById('basicRules').value = localStorage.getItem('basicRules') || '禁止拿無關武器來攻擊考官, 手機端禁止使用輔助瞄準, 步槍可使用DL或只使用步槍, 如違反以上規則將警告一次，若再犯，將取消考試資格, 如要再考試者請於考試結束後3小時再報名';
     
     document.getElementById('arch1Title').value = localStorage.getItem('arch1Title') || '📝 開單系統完善';
-    document.getElementById('arch1Desc').value = localStorage.getItem('arch1Desc') || '本團開單系統為問題式，開單後考官不必多做基本詢問。系統自動收集必要資訊，讓處理流程更快速高效。所有申請都會被認真審核，確保每個案件都能獲得妥善處理，給予成員最好的服務體驗。';
+    document.getElementById('arch1Desc').value = localStorage.getItem('arch1Desc') || '本團開單系統為問題式，開單後考官不必多做基本詢問。所有單票會被快速受理，給予團員最好的服務體驗。';
     document.getElementById('arch2Title').value = localStorage.getItem('arch2Title') || '🔒 管理系統完善';
-    document.getElementById('arch2Desc').value = localStorage.getItem('arch2Desc') || '本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。多重把關機制，讓每個處罰都經過嚴格審查，保護每個成員的權益。';
+    document.getElementById('arch2Desc').value = localStorage.getItem('arch2Desc') || '本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。';
     document.getElementById('arch3Title').value = localStorage.getItem('arch3Title') || '⚠️ 警告系統完善';
-    document.getElementById('arch3Desc').value = localStorage.getItem('arch3Desc') || '本團警告區採指令式，警告單版面統一。系統自動發送通知，讓管理更加規範透明。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在，並有機會改進。';
+    document.getElementById('arch3Desc').value = localStorage.getItem('arch3Desc') || '本團警告區採指令式，警告單版面統一。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在。';
 }
 
 if (localStorage.getItem('isLoggedIn') === 'true') {

@@ -14,6 +14,9 @@
 
 .chenyu-font {
     font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.8rem !important;
+    font-weight: 600;
+    line-height: 1.6;
 }
 
 * {
@@ -248,7 +251,7 @@ h1 {
 <body>
     <nav>
         <div class="nav-left">
-            <img src="" alt="KS Logo" class="nav-logo-img" id="navLogoImg" style="display:none;">
+            <img src="ks-logo.png" alt="KS Logo" class="nav-logo-img" id="navLogoImg">
             <span class="nav-logo-text">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</span>
         </div>
         <ul>
@@ -261,8 +264,8 @@ h1 {
 
     <div class="container">
         <div class="header-section">
-            <img src="" alt="KS Team Logo" class="team-logo" id="teamLogoImg" style="display:none;">
-            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+            <img src="ks-logo.png" alt="KS Team Logo" class="team-logo" id="teamLogoImg">
+            <div class="logo chenyu-font">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
         </div>
 
         <h1>核心成員</h1>
@@ -293,16 +296,12 @@ function renderMembers(containerId, membersString) {
 function loadSettings() {
     const navLogoImg = document.getElementById('navLogoImg');
     const teamLogoImg = document.getElementById('teamLogoImg');
-    const logoUrl = localStorage.getItem('teamLogoUrl') || 'ks-logo.png';
-    if (logoUrl) {
-        navLogoImg.src = logoUrl;
-        navLogoImg.style.display = 'block';
-        teamLogoImg.src = logoUrl;
-        teamLogoImg.style.display = 'block';
-    } else {
-        navLogoImg.style.display = 'none';
-        teamLogoImg.style.display = 'none';
-    }
+    // 清除可能有问题的localStorage设置，强制使用默认Logo
+    localStorage.removeItem('teamLogoUrl');
+    navLogoImg.src = 'ks-logo.png';
+    teamLogoImg.src = 'ks-logo.png';
+    navLogoImg.style.display = 'block';
+    teamLogoImg.style.display = 'block';
     
     document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
     document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
