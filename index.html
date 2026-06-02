@@ -20,13 +20,6 @@
     <meta name="twitter:description" content="">
     <meta name="twitter:image" content="https://ksclan.github.io/KSclan/ks-logo.png">
     <style>
-@font-face {
-    font-family: 'ChenYuluoyan';
-    src: url('ChenYuluoyan-2.0-Thin.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -38,13 +31,6 @@ body {
     background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
     color: #333;
     min-height: 100vh;
-}
-
-.chenyu-font {
-    font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.8rem !important;
-    font-weight: 600;
-    line-height: 1.6;
 }
 
 .big-text {
@@ -386,25 +372,25 @@ h3 {
     <div class="container">
         <div class="header-section">
             <img src="ks-logo.png" alt="KS Team Logo" class="team-logo" id="teamLogoImg">
-            <div class="logo chenyu-font">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
         </div>
 
         <h1>簡介</h1>
-        <h2 id="homeIntroText" class="chenyu-font" style="border-bottom: none; padding-bottom: 0; font-size: 1.5rem !important;">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</h2>
+        <h2 id="homeIntroText" style="border-bottom: none; padding-bottom: 0;">你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！</h2>
         <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
 
-        <h3 class="chenyu-font" style="font-size: 2.2rem !important;">💡 為什麼選擇 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮？</h3>
+        <h3 id="whyChooseTitle">💡 為什麼選擇 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮？</h3>
         <ul class="features-list">
-            <li class="chenyu-font" style="font-size: 1.5rem !important;">支援步槍、小刀、狙擊槍等各類考試</li>
-            <li class="chenyu-font" style="font-size: 1.5rem !important;">完善的分級制度與明確分類，讓你清楚掌握自己的實力定位</li>
-            <li class="chenyu-font" style="font-size: 1.5rem !important;">聊天室熱鬧有趣，環境和諧、鮮少糾紛</li>
-            <li class="chenyu-font" style="font-size: 1.5rem !important;">不定期舉辦友誼賽</li>
-            <li class="chenyu-font" style="font-size: 1.5rem !important;">提供彈性的改名制度</li>
+            <li>支援步槍、小刀、狙擊槍等各類考試</li>
+            <li>完善的分級制度與明確分類，讓你清楚掌握自己的實力定位</li>
+            <li>聊天室熱鬧有趣，環境和諧、鮮少糾紛</li>
+            <li>不定期舉辦友誼賽</li>
+            <li>提供彈性的改名制度</li>
         </ul>
         <hr style="border:none; border-top:2px solid #ffd700; margin:40px 0;">
 
-        <h3 id="joinTitleText" class="chenyu-font" style="font-size: 2rem !important;">🔥 加入我們，書寫你的傳奇！</h3>
-        <h2 id="joinDescText" class="chenyu-font" style="border-bottom: none; padding-bottom: 0; font-size: 1.5rem !important;">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</h2>
+        <h3 id="joinTitleText">🔥 加入我們，書寫你的傳奇！</h3>
+        <h2 id="joinDescText" style="border-bottom: none; padding-bottom: 0;">加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！</h2>
 
         <div class="buttons">
             <a href="https://discord.gg/UDBPVTsu2x" target="_blank" class="btn btn-discord" id="discordLinkBtn">加入 Discord</a>
@@ -453,39 +439,6 @@ function loadSettings() {
     navLogoImg.src = 'ks-logo.png';
     logoImg.style.display = 'block';
     navLogoImg.style.display = 'block';
-    
-    document.getElementById('homeIntroText').textContent = localStorage.getItem('homeIntro') || '你還在獨自奮戰嗎？加入我們，這裡不只是戰隊，更是你展現身手、突破自我！';
-    document.getElementById('joinTitleText').textContent = localStorage.getItem('joinTitle') || '🔥 加入我們，書寫你的傳奇！';
-    document.getElementById('joinDescText').textContent = localStorage.getItem('joinDesc') || '加入我們 ，書寫你的傳奇！如果你渴望成長、熱愛競技，現在就透過下面按鈕加入我們，與強者同行！';
-    document.getElementById('discordLinkBtn').href = localStorage.getItem('discordLink') || 'https://discord.gg/UDBPVTsu2x';
-    
-    document.getElementById('feature1Title').textContent = localStorage.getItem('feature1Title') || '⚔️ 多樣武器';
-    document.getElementById('feature1Desc').textContent = localStorage.getItem('feature1Desc') || '支持步槍、小刀、狙擊槍，提供多樣選擇';
-    document.getElementById('feature2Title').textContent = localStorage.getItem('feature2Title') || '🎭 和諧氣氛';
-    document.getElementById('feature2Desc').textContent = localStorage.getItem('feature2Desc') || '聊天室常有趣事，不常有糾紛';
-    document.getElementById('feature3Title').textContent = localStorage.getItem('feature3Title') || '📊 明確分類';
-    document.getElementById('feature3Desc').textContent = localStorage.getItem('feature3Desc') || '戰隊整體有明確分類';
-    document.getElementById('feature4Title').textContent = localStorage.getItem('feature4Title') || '🎯 團戰配合';
-    document.getElementById('feature4Desc').textContent = localStorage.getItem('feature4Desc') || '定期舉辦團戰，培養團隊默契與配合';
-    
-    const youtubeId = localStorage.getItem('youtubeId') || 'u1A5vfQ758A';
-    document.getElementById('youtubeFrame').src = 'https://www.youtube.com/embed/' + youtubeId;
-    
-    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
-    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
-    document.querySelectorAll('h2').forEach(el => {
-        if (el.id !== 'homeIntroText' && el.id !== 'joinDescText') {
-            el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem';
-        }
-    });
-    document.querySelectorAll('h3').forEach(el => {
-        if (el.id !== 'joinTitleText') {
-            el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem';
-        }
-    });
-    document.querySelectorAll('p').forEach(el => {
-        el.style.fontSize = localStorage.getItem('pSize') || '1rem';
-    });
 }
 loadSettings();
     </script>

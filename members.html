@@ -5,20 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>成員 - 𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</title>
     <style>
-@font-face {
-    font-family: 'ChenYuluoyan';
-    src: url('ChenYuluoyan-2.0-Thin.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-.chenyu-font {
-    font-family: 'ChenYuluoyan', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.8rem !important;
-    font-weight: 600;
-    line-height: 1.6;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -265,7 +251,7 @@ h1 {
     <div class="container">
         <div class="header-section">
             <img src="ks-logo.png" alt="KS Team Logo" class="team-logo" id="teamLogoImg">
-            <div class="logo chenyu-font">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
+            <div class="logo">𝓚.𝓢 𝓐𝓵𝓵𝓲𝓪𝓷𝓬𝓮</div>
         </div>
 
         <h1>核心成員</h1>
@@ -303,14 +289,8 @@ function loadSettings() {
     navLogoImg.style.display = 'block';
     teamLogoImg.style.display = 'block';
     
-    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
-    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
-    document.querySelectorAll('h2').forEach(el => el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem');
-    document.querySelectorAll('h3').forEach(el => el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem');
-    document.querySelectorAll('p').forEach(el => el.style.fontSize = localStorage.getItem('pSize') || '1rem');
-    
-    renderMembers('coreMembersGrid', localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
-    renderMembers('examinersGrid', localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
+    renderMembers('coreMembersGrid', 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
+    renderMembers('examinersGrid', 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
 }
 loadSettings();
     </script>
