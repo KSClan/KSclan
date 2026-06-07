@@ -447,10 +447,15 @@ h3 {
 function loadSettings() {
     const logoImg = document.getElementById('teamLogoImg');
     const navLogoImg = document.getElementById('navLogoImg');
-    // 清除可能有问题的localStorage设置，强制使用默认Logo
-    localStorage.removeItem('teamLogoUrl');
-    logoImg.src = 'ks-logo.png';
-    navLogoImg.src = 'ks-logo.png';
+    
+    const savedLogoUrl = localStorage.getItem('teamLogoUrl');
+    if (savedLogoUrl) {
+        logoImg.src = savedLogoUrl;
+        navLogoImg.src = savedLogoUrl;
+    } else {
+        logoImg.src = 'ks-logo.png';
+        navLogoImg.src = 'ks-logo.png';
+    }
     logoImg.style.display = 'block';
     navLogoImg.style.display = 'block';
     

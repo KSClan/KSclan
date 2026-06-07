@@ -282,15 +282,26 @@ function renderMembers(containerId, membersString) {
 function loadSettings() {
     const navLogoImg = document.getElementById('navLogoImg');
     const teamLogoImg = document.getElementById('teamLogoImg');
-    // 清除可能有问题的localStorage设置，强制使用默认Logo
-    localStorage.removeItem('teamLogoUrl');
-    navLogoImg.src = 'ks-logo.png';
-    teamLogoImg.src = 'ks-logo.png';
+    
+    const savedLogoUrl = localStorage.getItem('teamLogoUrl');
+    if (savedLogoUrl) {
+        navLogoImg.src = savedLogoUrl;
+        teamLogoImg.src = savedLogoUrl;
+    } else {
+        navLogoImg.src = 'ks-logo.png';
+        teamLogoImg.src = 'ks-logo.png';
+    }
     navLogoImg.style.display = 'block';
     teamLogoImg.style.display = 'block';
     
-    renderMembers('coreMembersGrid', 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
-    renderMembers('examinersGrid', 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
+    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
+    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
+    document.querySelectorAll('h2').forEach(el => el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem');
+    document.querySelectorAll('h3').forEach(el => el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem');
+    document.querySelectorAll('p').forEach(el => el.style.fontSize = localStorage.getItem('pSize') || '1rem');
+    
+    renderMembers('coreMembersGrid', localStorage.getItem('coreMembers') || 'KS_num, KS_Diuyou8964, KS_lin, KS_heybro, KS_LeonEzzzz, KS_Ceolil, KS_PAK');
+    renderMembers('examinersGrid', localStorage.getItem('examiners') || 'KS_lin, FRZ_Stanley, KS_candy, KS_HeyBro, KS_LeonEzzzz, Brunch, KS_Ceolil, carda');
 }
 loadSettings();
     </script>

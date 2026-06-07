@@ -246,30 +246,21 @@ h1 {
             <div class="feature-card">
                 <h2 id="arch1Title">📝 開單系統完善</h2>
                 <div id="arch1Desc">
-                    <ul>
-                        <li>本團開單系統為問題式，開單後考官不必多做基本詢問</li>
-                        <li>所有單票會被快速受理，給予團員最好的服務體驗</li>
-                    </ul>
+                    <p>本團開單系統為問題式，開單後考官不必多做基本詢問。所有單票會被快速受理，給予團員最好的服務體驗。</p>
                 </div>
             </div>
             
             <div class="feature-card">
                 <h2 id="arch2Title">🔒 管理系統完善</h2>
                 <div id="arch2Desc">
-                    <ul>
-                        <li>本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員</li>
-                        <li>所有操作都有完整記錄，確保公平公正</li>
-                    </ul>
+                    <p>本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。</p>
                 </div>
             </div>
             
             <div class="feature-card">
                 <h2 id="arch3Title">⚠️ 警告系統完善</h2>
                 <div id="arch3Desc">
-                    <ul>
-                        <li>本團警告區採指令式，警告單版面統一</li>
-                        <li>每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在</li>
-                    </ul>
+                    <p>本團警告區採指令式，警告單版面統一。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在。</p>
                 </div>
             </div>
         </div>
@@ -285,12 +276,38 @@ h1 {
 function loadSettings() {
     const navLogoImg = document.getElementById('navLogoImg');
     const teamLogoImg = document.getElementById('teamLogoImg');
-    // 清除可能有问题的localStorage设置，强制使用默认Logo
-    localStorage.removeItem('teamLogoUrl');
-    navLogoImg.src = 'ks-logo.png';
-    teamLogoImg.src = 'ks-logo.png';
+    
+    const savedLogoUrl = localStorage.getItem('teamLogoUrl');
+    if (savedLogoUrl) {
+        navLogoImg.src = savedLogoUrl;
+        teamLogoImg.src = savedLogoUrl;
+    } else {
+        navLogoImg.src = 'ks-logo.png';
+        teamLogoImg.src = 'ks-logo.png';
+    }
     navLogoImg.style.display = 'block';
     teamLogoImg.style.display = 'block';
+    
+    document.querySelector('.logo').style.fontSize = localStorage.getItem('logoSize') || '2.5rem';
+    document.querySelectorAll('h1').forEach(el => el.style.fontSize = localStorage.getItem('h1Size') || '1.8rem');
+    document.querySelectorAll('h2').forEach(el => el.style.fontSize = localStorage.getItem('h2Size') || '1.5rem');
+    document.querySelectorAll('h3').forEach(el => el.style.fontSize = localStorage.getItem('h3Size') || '1.2rem');
+    document.querySelectorAll('p').forEach(el => el.style.fontSize = localStorage.getItem('pSize') || '1rem');
+    
+    const arch1Title = document.getElementById('arch1Title');
+    const arch2Title = document.getElementById('arch2Title');
+    const arch3Title = document.getElementById('arch3Title');
+    const arch1Desc = document.getElementById('arch1Desc');
+    const arch2Desc = document.getElementById('arch2Desc');
+    const arch3Desc = document.getElementById('arch3Desc');
+    
+    if (arch1Title) arch1Title.textContent = localStorage.getItem('arch1Title') || '📝 開單系統完善';
+    if (arch2Title) arch2Title.textContent = localStorage.getItem('arch2Title') || '🔒 管理系統完善';
+    if (arch3Title) arch3Title.textContent = localStorage.getItem('arch3Title') || '⚠️ 警告系統完善';
+    
+    if (arch1Desc) arch1Desc.innerHTML = '<p>' + (localStorage.getItem('arch1Desc') || '本團開單系統為問題式，開單後考官不必多做基本詢問。所有單票會被快速受理，給予團員最好的服務體驗。') + '</p>';
+    if (arch2Desc) arch2Desc.innerHTML = '<p>' + (localStorage.getItem('arch2Desc') || '本團添加監禁系統，可防止管理人員因濫權而踢出或停權無辜成員。所有操作都有完整記錄，確保公平公正。') + '</p>';
+    if (arch3Desc) arch3Desc.innerHTML = '<p>' + (localStorage.getItem('arch3Desc') || '本團警告區採指令式，警告單版面統一。每次警告都會詳細記錄原因與證據，讓成員清楚了解問題所在。') + '</p>';
 }
 loadSettings();
     </script>
