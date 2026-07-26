@@ -421,10 +421,10 @@ function loadSettings() {
     
     document.getElementById('examIntroText').textContent = localStorage.getItem('examIntro') || '本團並無分菁英團員或一般團員，而採用軍階';
     
-    renderRules('beginnerRulesText', localStorage.getItem('beginnerRules') || '等級最低限制 - 50等\n牌位最低限制 - 黃金 1\n考試通過後更名方式 - KsR\n\n[步槍] 考生1局1勝\n[狙擊槍] - 考生1局1勝\n[小刀] - 考生1局1勝');
-    renderRules('intermediateRulesText', localStorage.getItem('intermediateRules') || '等級最低限制 - 150等\n牌位最低限制 - 白金 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝');
-    renderRules('advancedRulesText', localStorage.getItem('advancedRules') || '等級最低限制 - 250等\n牌位最低限制 - 鑽石 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n[狙擊槍] - 考生3局2勝\n[小刀] - 考生3局2勝');
-    renderBasicRules('basicRulesList', localStorage.getItem('basicRules') || '禁止拿無關武器來攻擊考官, 手機端禁止使用輔助瞄準, 步槍可使用DL或只使用步槍, 如違反以上規則將警告一次，若再犯，將取消考試資格, 如要再考試者請於考試結束後3小時再報名');
+    renderRules('beginnerRulesText', localStorage.getItem('beginnerRules') || '等級最低限制 - 100等\n牌位最低限制 - 黃金 1\n考試通過後更名方式 - KsR\n\n[步槍] 考生1局1勝\n武器 - DL、CL\n[狙擊槍] - 考生1局1勝\n武器 - SDL、SCL\n[小刀] - 考生1局1勝\n武器 - Bow / Dagger / Knife / War Horn');
+    renderRules('intermediateRulesText', localStorage.getItem('intermediateRules') || '等級最低限制 - 150等\n牌位最低限制 - 白金 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n武器 - DL、CL\n[狙擊槍] - 考生3局2勝\n武器 - SDL、SCL\n[小刀] - 考生3局2勝\n武器 - Bow / Dagger / Knife / War Horn');
+    renderRules('advancedRulesText', localStorage.getItem('advancedRules') || '等級最低限制 - 250等\n牌位最低限制 - 鑽石 1\n考試通過後更名方式 - KS\n\n[步槍] - 考生3局2勝\n武器 - DL、CL\n[狙擊槍] - 考生3局2勝\n武器 - SDL、SCL\n[小刀] - 考生3局2勝\n武器 - Bow / Dagger / Knife / War Horn');
+    renderBasicRules('basicRulesList', localStorage.getItem('basicRules') || 嚴禁拿"Spam"武器進行考試, 手機端禁止使用輔助瞄準, 如違反以上規則將警告一次，若再犯，將取消考試資格, 若未達標仍開單者將永久禁止使用票卷系統, 本團可掛他團團名，但須掛本團團名於最前方。, 考官有權懷疑考生開掛並且PC Check。, 如要再考試者請於考試結束後二天再報名，除考官同意可無視此規則');
 }
 loadSettings();
     </script>
